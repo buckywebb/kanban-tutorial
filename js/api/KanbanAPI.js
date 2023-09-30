@@ -11,10 +11,10 @@ export default class KanbanAPI {
 
     static insertItem(columnId, content) {
         const data = read()
-        const column = read().find(column => column.id == columnId)
+        const column = data.find(column => column.id == columnId)
         const item = {
             id: Math.floor(Math.random() * 100000),
-            content
+            content,
         }
 
         if(!column) {

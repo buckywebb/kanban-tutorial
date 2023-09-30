@@ -1,11 +1,11 @@
-import KanbanAPI from "../api/KanbanAPI"
+import KanbanAPI from "../api/KanbanAPI.js"
 
 
-export default class Item{
+export default class Item {
     constructor(id, content) {
         this.elements = {}
         this.elements.root = Item.createRoot()
-        this.elements.input = this.elements.root.QuerySelector("kanban__item-input")
+        this.elements.input = this.elements.root.querySelector(".kanban__item-input")
         this.elements.root.dataset.id = id
         this.elements.input.textContent = content
         this.content = content
@@ -13,7 +13,7 @@ export default class Item{
         const onBlur = () => {
             const newContent = this.elements.input.textContent.trim()
 
-            if(newContent === this.content) {
+            if (newContent === this.content) {
                 return
             }
 
@@ -24,13 +24,13 @@ export default class Item{
             })
         }
 
-        this.elements.input.addEventListener("blur",onBlur)
-        this.elements.root.addEventListener("dblclick",() => {
+        this.elements.input.addEventListener("blur", onBlur)
+        this.elements.root.addEventListener("dblclick", () => {
             const check = confirm("Are you sure you want to delete?")
 
-            if(check) {
+            if (check) {
                 KanbanAPI.deleteItem(id)
-                this.elements.input.removeEventListener("blur",onBlur)
+                this.elements.input.removeEventListener("blur", onBlur)
                 this.elements.root.parentElement.removeChild(this.elements.root)
             }
         }
@@ -42,10 +42,10 @@ export default class Item{
 
         range.selectNode(document.body)
 
-        return range.createContextualFragment(
+        return range.createContextualFragment(`
             <div class="kanban__item" draggable="true">
                 <div class="kanban__item-input" contenteditable></div>
             </div>
-        ).children[0]
+        `).children[0]
     }
 }
