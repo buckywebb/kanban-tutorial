@@ -1,4 +1,5 @@
 import KanbanAPI from "../api/KanbanAPI"
+import Item from "./Item.js"
 
 
 export default class Column {

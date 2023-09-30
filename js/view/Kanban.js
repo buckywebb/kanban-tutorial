@@ -3,7 +3,7 @@ export default class Kanban {
         this.root = root
 
         Kanban.columns().forEach(column => {
-            //TODO: Create an instance of Column class
+            
         })
     }
 
