@@ -26,7 +26,6 @@
 }
 
 .kanban__item-input {
-    margin-bottom: 10px; /* Remove after adding drag/drop features*/
     padding: 10px 15px;
     box-sizing: border-box;
     background: white;
